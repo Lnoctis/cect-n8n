@@ -1,17 +1,37 @@
 body {
-    width: 320px;
+    width: 340px;
     padding: 16px;
     font-family: Arial, sans-serif;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    margin-bottom: 12px;
+h2 {
+    margin-top: 0;
+}
+
+h4 {
+    margin-bottom: 8px;
 }
 
 #result {
+    min-height: 120px;
+    max-height: 180px;
+    overflow-y: auto;
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    padding: 10px;
+    margin-bottom: 16px;
+
     white-space: pre-wrap;
     word-break: break-word;
+
+    background: #fafafa;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 6px;
 }

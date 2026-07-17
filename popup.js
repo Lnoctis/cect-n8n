@@ -1,10 +1,9 @@
-const extractBtn = document.getElementById("extractBtn");
 const sendBtn = document.getElementById("sendBtn");
 const result = document.getElementById("result");
 
 let selectedText = "";
 
-extractBtn.addEventListener("click", async () => {
+async function loadSelectedText() {
 
     const [tab] = await chrome.tabs.query({
         active: true,
@@ -17,42 +16,7 @@ extractBtn.addEventListener("click", async () => {
         (response) => {
 
             if (chrome.runtime.lastError) {
-                result.textContent = chrome.runtime.lsendBtn.addEventListener("click", async () => {
-
-    if (!selectedText) {
-
-        alert("Please highlight text first.");
-
-        return;
-
-    }
-
-    const response = await fetch(
-        "http://localhost:5678/webhook-test/highlight",
-        {
-            method: "POST",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-
-                text: selectedText,
-
-                timestamp: new Date().toISOString()
-
-            })
-        }
-    );
-
-    const data = await response.json();
-
-    alert("Sent successfully!");
-
-    console.log(data);
-
-});astError.message;
+                result.textContent = "Unable to read this page.";
                 return;
             }
 
@@ -64,8 +28,10 @@ extractBtn.addEventListener("click", async () => {
         }
     );
 
-});
+}
 
+// Automatically load highlighted text when popup opens
+loadSelectedText();
 
 sendBtn.addEventListener("click", () => {
 
