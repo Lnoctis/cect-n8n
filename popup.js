@@ -17,22 +17,7 @@ extractBtn.addEventListener("click", async () => {
         (response) => {
 
             if (chrome.runtime.lastError) {
-                result.textContent = chrome.runtime.lastError.message;
-                return;
-            }
-
-            selectedText = response?.selectedText || "";
-
-            result.textContent =
-                selectedText || "Nothing selected.";
-
-        }
-    );
-
-});
-
-
-sendBtn.addEventListener("click", async () => {
+                result.textContent = chrome.runtime.lsendBtn.addEventListener("click", async () => {
 
     if (!selectedText) {
 
@@ -66,5 +51,49 @@ sendBtn.addEventListener("click", async () => {
     alert("Sent successfully!");
 
     console.log(data);
+
+});astError.message;
+                return;
+            }
+
+            selectedText = response?.selectedText || "";
+
+            result.textContent =
+                selectedText || "Nothing selected.";
+
+        }
+    );
+
+});
+
+
+sendBtn.addEventListener("click", () => {
+
+    if (!selectedText) {
+        alert("Please highlight text first.");
+        return;
+    }
+
+    chrome.runtime.sendMessage(
+        {
+            action: "SEND_TO_N8N",
+            text: selectedText
+        },
+        (response) => {
+
+            if (response.success) {
+
+                alert("Sent successfully!");
+
+                console.log(response.data);
+
+            } else {
+
+                alert(response.error);
+
+            }
+
+        }
+    );
 
 });
